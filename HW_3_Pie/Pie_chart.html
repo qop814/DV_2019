@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="jquery-csv.js"></script>
+
+    <script type="text/javascript">
+      google.charts.load('current', {
+        packages: ['corechart', 'line']
+      });
+      google.charts.setOnLoadCallback(readFile); 
+	  // 1. when the javascript is read, readFile function is launched first.
+      // 2. file is read, and the data is saved in arrayData
+      // arrayData variable is sent to the function called 'draw'
+      function readFile() {
+        filename = "Age_ratio.csv"; // [1] 불러 오고자 하는 파일 이름
+        $.get(filename, function(csvString) {
+          // read a .csv file and save the data in arrayData variable
+          var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+          // send arrayData to 'draw' function
+          draw(arrayData)
+        });
+      };
+	  
+	  // [2] 밑부분에 넣고자 하는 chart function을 추가한 후, parameter로 "arrayData"를 삽입
+	  // [3] var data 안에도 arrayData를 추가 - 나머지는 기존과 동일
+      function drawChart(arrayData) {
+        var data = google.visualization.arrayToDataTable(arrayData);
+        var options = {
+          title: 'Aging Population Ratio'
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+	<div id="introduction" style="max-width: 800px; font-family: Verdana, Dotum; margin: auto; padding-bottom: 30px">
+      <h1>World Aging Forecast, World Aging Population Ratio Ranking</h1>
+      <p>date: 2019-09-17</p>
+      <p>name: Park Hyunsu (21500849)</p>
+      <p>Introduction: This chart shows the percentage of aging senior citizens around the world.</p>
+      <p>Data: The data is refered from this link (https://m.blog.naver.com/PostView.nhn?blogId=djj5383&logNo=220966292874&proxyReferer=https%3A%2F%2Fwww.google.com%2F)</p>
+      <p>Source code of this page: https://github.com/qop814/DV_2019/tree/master/HW_3_Pie<p>
+    </div>
+    <div id="piechart" style="max-width: 1200px; margin: auto; width: 1200px; height: 500px;"></div>
+  </body>
+</html>
