@@ -5,15 +5,15 @@
     <script src="jquery-csv.js"></script>
 
     <script type="text/javascript">
-      google.charts.load('current', {
-        packages: ['corechart', 'line']
-      });
-	    
-      google.charts.setOnLoadCallback(readFile); 
+	
+	
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(readFile);
 	  // 1. when the javascript is read, readFile function is launched first.
       // 2. file is read, and the data is saved in arrayData
       // arrayData variable is sent to the function called 'draw'
-      function readFile() {
+      
+	  function readFile() {
         filename = "Age_ratio.csv"; // [1] 불러 오고자 하는 파일 이름
         $.get(filename, function(csvString) {
           // read a .csv file and save the data in arrayData variable
@@ -30,8 +30,11 @@
         var options = {
           title: 'Aging Population Ratio'
         };
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
+		
+		
+		
+        var chart1 = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart1.draw(data, options);
       }
     </script>
   </head>
