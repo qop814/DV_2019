@@ -1,7 +1,6 @@
 <html>
   <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="jquery-csv.js"></script>
 
@@ -27,7 +26,7 @@
 	  // [2] 밑부분에 넣고자 하는 chart function을 추가한 후, parameter로 "arrayData"를 삽입
 	  // [3] var data 안에도 arrayData를 추가 - 나머지는 기존과 동일
       function drawChart(arrayData) {
-        var data = google.visualization.arrayToDataTable(arrayData);
+        var data = new google.visualization.arrayToDataTable(arrayData);
         var options = {
           title: 'Aging Population Ratio'
         };
