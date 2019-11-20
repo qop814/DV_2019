@@ -5,16 +5,16 @@
     <script src="jquery-csv.js"></script>
     
     <script type="text/javascript">
-      google.charts.load('current', {
-        'packages':['geochart'],
-        // Note: you will need to get a mapsApiKey for your project.
-        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-        'mapsApiKey': 'AIzaSyD2FNEG3O-O94XabJReBdrU0HSAU3-bAd0' // my own Api key
-      });
+	
+	
+      google.charts.load('current', {'packages':['corechart'],
+						 'mapsApiKey': 'AIzaSyD2FNEG3O-O94XabJReBdrU0HSAU3-bAd0'});
       google.charts.setOnLoadCallback(readFile);
-      
+	  
+	  
       function readFile() {
         filename = "data2.csv";
+		
         $.get(filename, function(csvString) {
           // read a .csv file and save the data in arrayData variable
           var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
