@@ -7,13 +7,13 @@
     <script type="text/javascript">
 	
 	
-      google.charts.load('current', {'packages':['map'],
+     google.charts.load('current', {'packages':['corechart'],
 						 'mapsApiKey': 'AIzaSyD2FNEG3O-O94XabJReBdrU0HSAU3-bAd0'});
-      google.charts.setOnLoadCallback(readFile);
+     google.charts.setOnLoadCallback(readFile);
 	  
 	  
       function readFile() {
-        filename = "data3.csv";
+        filename = "data2.csv";
 		
         $.get(filename, function(csvString) {
           // read a .csv file and save the data in arrayData variable
@@ -26,15 +26,26 @@
 	  
       function drawChart(arrayData) {
         var data = google.visualization.arrayToDataTable(arrayData);
-        var options = {
-          icons: {
-            default: {
-              normal: 'https://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/Map-Marker-Ball-Azure-icon.png',
-              selected: 'https://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/Map-Marker-Ball-Right-Azure-icon.png'
-            }
-          }
-        };
-
+		var options = {
+			zoomLevel: 10,
+			showTooltip: true,
+			showInfoWindow: true,
+			useMapTypeControl: true,
+			icons: {
+			  blue: {
+				normal:   url + 'Map-Marker-Ball-Azure-icon.png',
+				selected: url + 'Map-Marker-Ball-Right-Azure-icon.png'
+			  },
+			  green: {
+				normal:   url + 'Map-Marker-Push-Pin-1-Chartreuse-icon.png',
+				selected: url + 'Map-Marker-Push-Pin-1-Right-Chartreuse-icon.png'
+			  },
+			  pink: {
+				normal:   url + 'Map-Marker-Ball-Pink-icon.png',
+				selected: url + 'Map-Marker-Ball-Right-Pink-icon.png'
+			  }
+			}
+		  };
         var map = new google.visualization.Map(document.getElementById('map_markers_div'));
         map.draw(data, options);
       }
