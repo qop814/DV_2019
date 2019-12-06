@@ -7,13 +7,13 @@
     <script type="text/javascript">
 	
 	
-      google.charts.load('current', {'packages':['corechart'],
+      google.charts.load('current', {'packages':['map'],
 						 'mapsApiKey': 'AIzaSyD2FNEG3O-O94XabJReBdrU0HSAU3-bAd0'});
       google.charts.setOnLoadCallback(readFile);
 	  
 	  
       function readFile() {
-        filename = "data2.csv";
+        filename = "data3.csv";
 		
         $.get(filename, function(csvString) {
           // read a .csv file and save the data in arrayData variable
