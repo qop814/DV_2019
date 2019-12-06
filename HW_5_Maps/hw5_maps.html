@@ -23,29 +23,33 @@
         });
       };
 	  
-      function drawRegionsMap(arrayData) {
+	  
+      function drawChart(arrayData) {
         var data = google.visualization.arrayToDataTable(arrayData);
         var options = {
-          region: '150',
-          sizeAxis: { minValue: 0, maxValue: 0.5 },
-          colorAxis: {colors: ['red', 'green']}
+          icons: {
+            default: {
+              normal: 'https://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/Map-Marker-Ball-Azure-icon.png',
+              selected: 'https://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/Map-Marker-Ball-Right-Azure-icon.png'
+            }
+          }
         };
-        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-        chart.draw(data, options);
+
+        var map = new google.visualization.Map(document.getElementById('map_markers_div'));
+        map.draw(data, options);
       }
+
     </script>
   </head>
   <body>
 	<div id="introduction" style="max-width: 800px; font-family: Verdana, Dotum; margin: auto; padding-bottom: 30px">
-      <h1>Comparison of European GINI Coefficients (Inequalities Index)</h1>
-      <p>date: 2019-11-20</p>
+      <h1>Find the best restaurants in Yangdeok-gu, Hwanho-dong</h1>
+      <p>date: 2019-12-06</p>
       <p>name: Park Hyunsu (21500849)</p>
-      <p>Introduction: The figure above shows the difference in inequality in Europe. The higher the Gini coefficient, the higher the inequality..</p>
-      <p>Data: The first link is a table of global Gini Coefficients (OECD), using 2016 for the project. The second link is the country code conversion table, which is used to convert all names to country codes. (link1: http://kosis.kr/statHtml/statHtml.do?orgId=101&tblId=DT_2KAAD20_OECD / link2: http://img.echosting.cafe24.com/guide/country_code_table.pdf)</p>
-      <p>Source code of this page: https://github.com/qop814/DV_2019/tree/master/HW_4_Geo<p>
+      <p>Introduction: The figure below shows maps of the restaurants in Pohang. Each location used a search personally.</p>
+      <p>Data: Each location was personally found using Naver maps and Google maps.</p>
+      <p>Source code of this page: https://github.com/qop814/DV_2019/tree/master/HW_5_Maps<p>
     </div>
-    <div id="regions_div" style="max-width: 1200px; margin: auto; width: 1200px; height: 500px;"></div>
+    <div id="map_markers_div" style="max-width: 1200px; margin: auto; width: 1200px; height: 500px;"></div>
   </body>
 </html>
-
-
