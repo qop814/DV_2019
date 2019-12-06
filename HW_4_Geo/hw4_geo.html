@@ -7,7 +7,7 @@
     <script type="text/javascript">
 	
 	
-      google.charts.load('current', {'packages':['map'],
+      google.charts.load('current', {'packages':['corechart'],
 						 'mapsApiKey': 'AIzaSyD2FNEG3O-O94XabJReBdrU0HSAU3-bAd0'});
       google.charts.setOnLoadCallback(readFile);
 	  
@@ -22,9 +22,9 @@
           drawRegionsMap(arrayData)
         });
       };
-	
 	  
-      function drawChart() {
+	  
+      function drawChart(arrayData) {
         var data = google.visualization.arrayToDataTable(arrayData);
         var options = {
           icons: {
